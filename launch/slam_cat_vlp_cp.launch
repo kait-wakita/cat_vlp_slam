@@ -1,0 +1,33 @@
+<launch>
+  <arg name="scan_topic" default="/scan" />
+  <arg name="odom_topic" default="/odom" />
+
+  <include file="$(find cat_vlp_slam)/launch/VLP16_points.launch" />
+
+
+  <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">
+    <param name="base_frame" value="base_link"/>
+    <param name="odom_frame" value="odom"/>
+
+    <param name="maxUrange" value="100.0"/>
+    <param name="maxRange" value="100.0"/>
+
+    <param name="srr" value="0.4"/>
+    <param name="srt" value="0.4"/>
+    <param name="str" value="0.4"/>
+    <param name="stt" value="0.4"/>
+
+    <param name="map_update_interval" value="1.0"/>
+    <param name="linearUpdate" value="0.5"/>
+    <param name="angularUpdate" value="0.2"/>
+    <param name="temporalUpdate" value="1.0"/>
+    <param name="xmin" value="-5.0"/>
+    <param name="xmax" value="40.0"/>
+    <param name="ymin" value="-30.0"/>
+    <param name="ymax" value="30"/>
+    <param name="delta" value="0.05"/>
+    <param name="minimumScore" value="50"/>
+
+    <param name="particles" value="200"/>
+  </node>
+</launch>
