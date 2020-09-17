@@ -22,6 +22,7 @@ while not rospy.is_shutdown():
     vel=Twist()
     direction = raw_input('w a s z, return:stop > ')
     if 'w' in direction: vel.linear.x = 0.20
+    if 'e' in direction: vel.linear.x = 0.40
     if 'z' in direction: vel.linear.x = -0.20
     if 'a' in direction: vel.angular.z = 3.14/8  #pi/4[rad/sec]
     if 'd' in direction: vel.angular.z = -3.14/8
