@@ -1,0 +1,10 @@
+<launch>
+  <!-- AMCL -->
+  <include file="$(find pimouse_slam_master)/launch/amcl_cat_d2.launch"/>
+
+  <!-- move_base -->
+  <include file="$(find pimouse_slam_master)/launch/move_base_cat.launch"/>
+
+  <!-- rviz -->
+  <!-- <node pkg="rviz" type="rviz" name="rviz" required="true" args="-d $(find pimouse_slam_master)/launch/navigation.rviz"/> -->
+</launch>

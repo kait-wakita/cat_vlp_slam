@@ -1,0 +1,15 @@
+<launch>
+  <!-- AMCL -->
+  <include file="$(find cat_vlp_slam)/launch/amcl_cat_d2.launch"/>
+
+  <!-- move_base -->
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" />
+    <rosparam file="$(find cat_vlp_slam)/param-cat-default/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find cat_vlp_slam)/param-cat-default/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find cat_vlp_slam)/param-cat-default/planner.yaml" command="load" />
+  </node>
+
+  <!-- rviz -->
+  <!-- <node pkg="rviz" type="rviz" name="rviz" required="true" args="-d $(find cat_vlp_slam)/rviz/navigation.rviz"/> -->
+</launch>
